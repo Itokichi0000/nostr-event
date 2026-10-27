@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+/* デザイントークン（ライト / ダーク）。色だけで状態を区別しないよう、バッジは必ずテキストを併記する */
+:root {
+  --bg: #f7f6f2;
+  --surface: #ffffff;
+  --surface-2: #f0eee8;
+  --fg: #1d1b18;
+  --muted: #6b665d;
+  --border: #e2ded4;
+  --primary: #0f6e6e;
+  --primary-fg: #ffffff;
+  --primary-soft: #dff1ef;
+  --accent: #c2410c;
+  --accent-soft: #fdebdc;
+  --ok: #166534;
+  --ok-soft: #dcfce7;
+  --warn: #92400e;
+  --warn-soft: #fef3c7;
+  --danger: #b91c1c;
+  --danger-soft: #fee2e2;
+  --info: #1e40af;
+  --info-soft: #dbeafe;
+  --ring: #0f6e6e;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141412;
+    --surface: #1d1c19;
+    --surface-2: #262420;
+    --fg: #f1efe9;
+    --muted: #a8a196;
+    --border: #36332d;
+    --primary: #4fb8b0;
+    --primary-fg: #0b1f1e;
+    --primary-soft: #16302e;
+    --accent: #fb923c;
+    --accent-soft: #3a2414;
+    --ok: #86efac;
+    --ok-soft: #14301d;
+    --warn: #fcd34d;
+    --warn-soft: #382a0c;
+    --danger: #fca5a5;
+    --danger-soft: #3b1515;
+    --info: #93c5fd;
+    --info-soft: #172544;
+    --ring: #4fb8b0;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-fg: var(--primary-fg);
+  --color-primary-soft: var(--primary-soft);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-ring: var(--ring);
+  --font-sans: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", "Meiryo", system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  line-height: 1.65;
+  font-feature-settings: "palt";
+}
+
+/* キーボード操作時のフォーカスリング */
+:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.prose-text {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
