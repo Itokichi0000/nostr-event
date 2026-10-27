@@ -370,7 +370,7 @@ export type ListFilter = "upcoming" | "week" | "past";
 
 export async function listPublicEvents(opts: { q?: string; tag?: string; filter?: ListFilter; limit?: number }) {
   const now = new Date();
-  const conds: SQL[] = [eq(events.visibility, "public_nostr"), inArray(events.status, ["published", "cancelled"])];
+  const conds: SQL[] = [eq(events.visibility, "public_nostr"), inArray(events.status, ["published", "cancelled", "ended"])];
   const filter = opts.filter ?? "upcoming";
   if (filter === "past") conds.push(lte(events.endAt, now));
   else conds.push(gt(events.endAt, now));

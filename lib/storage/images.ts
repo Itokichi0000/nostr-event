@@ -27,15 +27,15 @@ export async function saveImage(bytes: Uint8Array): Promise<{ name: string; url:
   if (!type) throw new Error("unsupported_type");
   if (bytes.byteLength > MAX_IMAGE_BYTES) throw new Error("too_large");
   const name = `${generateToken(12)}.${type.ext}`;
-  await mkdir(config.uploadDir, { recursive: true });
-  await writeFile(path.join(config.uploadDir, name), bytes);
+  await mkdir(/*turbopackIgnore: true*/ config.uploadDir, { recursive: true });
+  await writeFile(path.join(/*turbopackIgnore: true*/ config.uploadDir, name), bytes);
   return { name, url: `${config.appUrl}/api/uploads/${name}` };
 }
 
 export async function readImage(name: string): Promise<{ bytes: Buffer; mime: string } | null> {
   if (!/^[A-Za-z0-9_-]+\.(png|jpg|gif|webp)$/.test(name)) return null;
   try {
-    const bytes = await readFile(path.join(config.uploadDir, name));
+    const bytes = await readFile(path.join(/*turbopackIgnore: true*/ config.uploadDir, name));
     const type = detectImageType(bytes);
     return type ? { bytes, mime: type.mime } : null;
   } catch {

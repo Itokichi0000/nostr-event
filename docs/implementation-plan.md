@@ -75,6 +75,24 @@ Phase 0 (基盤)
 - [x] 空状態・読み込み・エラー・再試行
 - [x] README（環境変数・migration・起動・ワーカー・テスト・デプロイ）
 
+## 未実装・後続タスク
+
+- [ ] NIP-46 の実機署名アプリ（Amber / nsec.app）との相互運用テスト
+- [ ] 画像の S3 互換ストレージ実装（現在はローカルディスク）
+- [ ] Turnstile 等の CAPTCHA（現在はレート制限のみ）
+- [ ] NIP-09 削除リクエスト
+- [ ] 受付期間を変更する UI（DB 列は実装済み）
+- [ ] 個人情報の90日削除バッチ
+- [ ] Web Push の実ブラウザー・iOS 実機での受信確認
+
 ## 進捗ログ
 
-各 Phase の結果は README の「実装状況」と `docs/decisions.md` に記録する。
+| Phase | 結果 |
+|---|---|
+| 0 | 基盤・スキーマ・migration・i18n・開発用リレー。lint / typecheck 通過 |
+| 1 | NIP-98 ログイン、NIP-52 公開（428 → 署名 → 検証）、リレー単位の公開追跡、一覧・詳細・作成・編集 |
+| 2 | Nostr / ゲスト申込、定員・承認・待機・繰り上げ、チケット、公開 RSVP、外部 RSVP 取り込み |
+| 3 | QR 受付、通知（dedupe・ポーリング）、Web Push（端末単位の配送記録）、PWA |
+| 4 | Vitest 59件（単体19・結合40）、Playwright E2E 4件（PC・スマホ幅）すべて成功。`pnpm build` 成功 |
+
+詳細は README「テストで確認していること」と `docs/decisions.md` を参照。

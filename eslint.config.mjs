@@ -4,7 +4,11 @@ import reactHooks from "eslint-plugin-react-hooks";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
-  { ignores: [".next/**", "node_modules/**", "drizzle/**", "public/sw.js", "next-env.d.ts", "playwright-report/**", "test-results/**"] },
+  { ignores: [".next/**", "node_modules/**", "drizzle/**", "public/sw.js", "next-env.d.ts", "playwright-report/**", "test-results/**", ".data/**"] },
+  {
+    files: ["**/*.mjs"],
+    languageOptions: { globals: { process: "readonly", console: "readonly", URL: "readonly" } },
+  },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
@@ -16,6 +20,7 @@ export default tseslint.config(
       "react-hooks/exhaustive-deps": "warn",
       "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
       "no-console": "off",
+      "no-empty": ["error", { allowEmptyCatch: true }],
     },
   },
 );

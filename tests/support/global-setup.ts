@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { runMigrations } from "../../scripts/migrate";
+import { runMigrations } from "../../lib/db/migrate";
 
 export default async function setup() {
   const url = process.env.TEST_DATABASE_URL;
